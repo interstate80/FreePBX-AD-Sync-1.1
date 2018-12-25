@@ -18,14 +18,13 @@ def log_timestamp():
 # Считываем конфигурацию settings.cfg
 #
 try:
-	# LDAP section
 	AD_URL = ConfigSectionMap('ldap')['adurl']
 	AD_USER = ConfigSectionMap('ldap')['aduser']
 	AD_PASSWORD = ConfigSectionMap('ldap')['adpassword']
 	BASE_DN = ConfigSectionMap('ldap')['basedn']
 	filterexp = ConfigSectionMap('misc')['extfilt']
 	adattr = ConfigSectionMap('misc')['adattr']
-    # MySQL section
+	NTP_HOST = ConfigSectionMap('misc')['ntphost']
 	DB_HOST = ConfigSectionMap('mysql')['dbhost']
 	ASTERISK_HOST = ConfigSectionMap('mysql')['dbhost']
 	DB_USER = ConfigSectionMap('mysql')['dbuser']
@@ -33,6 +32,7 @@ try:
 	DB_NAME = ConfigSectionMap('mysql')['dbname']
 except Exception as err:
 	print("%s: [ERROR]: Ошибка считывания конфигурации: %s." % (log_timestamp(), err))
+
 attrlist = ["displayName","sAMAccountName", "mail", "pager", adattr, "userAccountControl"]
 
 #
@@ -44,7 +44,7 @@ def check_ext(extnum, extname='', flag=1):
 	except Exception as err:
 		print("%s: [ERROR]: check_ext(%s) Ошибка подключения к БД: %s." % (log_timestamp(), extnum, err))
 	ch_cursor = DB.cursor()
-	print("%s: [NOTICE]: check_ext(%s) Проверка экстеншена %s на наличие." % (log_timestamp(), extnum, extnum))
+	# print("%s: [NOTICE]: check_ext(%s) Проверка экстеншена %s на наличие." % (log_timestamp(), extnum, extnum))
 	if flag == 1:
 		sql_ch = "select extension, name from users where extension='%s';" % extnum
 	elif flag == 2:
@@ -94,7 +94,7 @@ def del_ext(extnum):
 		res = os.system('/usr/sbin/rasterisk -x "database del CW %s"' % extnum)
 		print("%s: [NOTICE]: del_ext(%s) Удаление экстеншена из БД: %s." % (log_timestamp(), extnum, res))
 	except Exception as err:
-		print("%s: [ERROR]: del_ext(%s) %s." % (log_timestamp(), extnum, err))
+		print("%s: [ERROR]: del_ext(%s) Ошибка удаления %s." % (log_timestamp(), extnum, err))
 
 #
 # Создание нового экстеншена
