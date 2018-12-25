@@ -10,3 +10,4 @@ In this version (1.1):
 
 	- New function to DataBase query;
 	- New configuration files generator. Using templates now;
+	- Added NTP server for configuration;
