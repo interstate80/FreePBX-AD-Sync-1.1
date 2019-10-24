@@ -1,6 +1,7 @@
 #! /usr/bin/python
 # -*- coding: utf8 -*-
 
+from users_adv import log_timestamp
 from string import Template
 
 def gen_newCfg(telMAC, telExtention, telDisplayName, telPasswd, telAsteriskHost):
@@ -15,10 +16,10 @@ def gen_newCfg(telMAC, telExtention, telDisplayName, telPasswd, telAsteriskHost)
 	try:
 		CfgFile = open(CfgFilePath, 'w')
 		CfgFile.write(ResultStr)
-		CfgFile.close
+		CfgFile.close()
 	except Exception as err:
 		print("%s: [ERROR]: gen_newCfg(%s) %s. Путь к файлу: %s" % (log_timestamp(), telExtention, err, CfgFilePath))
-	TplFile.close
+	TplFile.close()
 
 if __name__ == '__main__':
 	print("Not for run standalone!")
