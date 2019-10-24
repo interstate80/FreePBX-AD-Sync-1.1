@@ -5,7 +5,6 @@ import os, random, string
 
 def gen_newpass(pleng):
     length = pleng
-#    newpass = ''
     chars = string.ascii_letters + string.digits + '!@#$%^&*()'
     random.seed = (os.urandom(1024))
     newpass = ''.join(random.choice(chars) for i in range(length))

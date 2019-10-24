@@ -1,11 +1,11 @@
 #! /usr/bin/python
 # -*- coding: utf8 -*-
 
-import os, ConfigParser
+import os, configparser
 
 def ConfigSectionMap(section):
     cfg_path = os.getcwd() + '/settings.cfg'
-    Config = ConfigParser.ConfigParser()
+    Config = configparser.ConfigParser()
     try:
         Config.read(cfg_path)
     except IOError as ioerr:
