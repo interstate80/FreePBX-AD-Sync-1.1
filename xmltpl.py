@@ -8,7 +8,7 @@ def gen_newCfg(telMAC, telExtention, telDisplayName, telPasswd, telAsteriskHost)
 	# считываем шаблон
 	TplFile = open('config.tmpl')
 	SrcTmpl = Template(TplFile.read())
-	ResultList = [telExtention, telDisplayName, telPasswd, telAsteriskHost]
+	# ResultList = [telExtention, telDisplayName, telPasswd, telAsteriskHost]
 	resultIn = {'telExtention':telExtention, 'telDisplayName':telDisplayName, 'telPasswd':telPasswd, 'telAsteriskHost':telAsteriskHost}
 	ResultStr = SrcTmpl.substitute(resultIn)
 	# сохраняем конфиг
