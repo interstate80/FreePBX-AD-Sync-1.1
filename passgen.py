@@ -4,10 +4,9 @@
 import os, random, string
 
 def gen_newpass(pleng):
-    length = pleng
     chars = string.ascii_letters + string.digits + '!@#$%^&*()'
     random.seed = (os.urandom(1024))
-    newpass = ''.join(random.choice(chars) for i in range(length))
+    newpass = ''.join(random.choice(chars) for i in range(pleng))
     return newpass
 
 if __name__ == '__main__':

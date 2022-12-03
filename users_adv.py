@@ -1,9 +1,7 @@
 #! /usr/bin/python
 # -*- coding: utf-8 -*-
 
-import ldap
-import MySQLdb
-import re, os
+import ldap, MySQLdb, re, os
 from datetime import datetime
 from configread import ConfigSectionMap
 from passgen import gen_newpass

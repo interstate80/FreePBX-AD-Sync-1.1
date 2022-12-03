@@ -19,7 +19,7 @@ def ConfigSectionMap(section):
             if dict1[option] == -1:
                 DebugPrint("%s: [DEBUG] Пропускаем: %s" % (log_timestamp(), option))
         except:
-            print("%s [ERROR] Считывание параметра %s!" % (log_timestamp(), option))
+            print("%s [ERROR]: Считывание параметра %s!" % (log_timestamp(), option))
             dict1[option] = None
     return dict1
 	
